@@ -59,11 +59,11 @@ body {
     height: 100vh;
     margin:0px;
 
-    background: -webkit-linear-gradient( to  top, black  , PaleTurquoise);
-    background: -moz-linear-gradient( to  top, black  , PaleTurquoise);
-    background: -ms-linear-gradient( to  top,   black  , PaleTurquoise);
-    background: -o-linear-gradient( to  top,   black  , PaleTurquoise);
-    background: linear-gradient( to  top,  black , PaleTurquoise); 
+    background: -webkit-linear-gradient( to  top, PaleTurquoise  , white);
+    background: -moz-linear-gradient( to  top, PaleTurquoise  , white);
+    background: -ms-linear-gradient( to  top,   PaleTurquoise  , white);
+    background: -o-linear-gradient( to  top,   PaleTurquoise  , white);
+    background: linear-gradient( to  top,  PaleTurquoise , white); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -170,7 +170,7 @@ div.transbox p {
 }
 #submi{
     color: white;
-    background-color: DarkOrange;
+    background-color: paleturquoise;
 }
 
 .JobRequests{
