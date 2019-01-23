@@ -13,11 +13,15 @@
        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
        
        {% if session['logged_in'] %}
+       
        <div class="hello">Hello , {{session['username']}}</div>
-       <a href="{{ url_for('logout')}}" class="btn btn-default">Logout </a>
+       <a href="{{ url_for('logout')}}" class="btn btn-outline-primary">Logout </a>
+      
        {%else%}
-       <a href="{{ url_for('SignUp')}}" class="btn btn-default">SignUp </a>
-       <a href="{{ url_for('Login')}}" class="btn btn-default">Login </a>
+       
+       <a href="{{ url_for('SignUp')}}" class="btn btn-outline-primary">SignUp </a>
+       <a href="{{ url_for('Login')}}" class="btn btn-outline-primary">Login </a>
+      
        {% endif%}
       
  
@@ -25,57 +29,10 @@
     </head>
     <body>
 
-
-
-
-
-      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-
-            
-            <li class="nav-item", id="demo">
-            </li>
-            <li class="nav-item", id="signup"></li>
-              </a>
-          </ul>
-          {% if session['logged_in'] %}
-          <div class="hello">Hello , {{session['username']}}</div>
-
-
-          {% endif%}
-          
-
-          
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="data" aria-label="Search">
-            <button id="submi" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav> -->
-
-
-
-
-
-
-
+      <div width= 100%>
       {% if session['logged_in'] %}
       <div class="hello">Hello , {{session['username']}}</div>
-
-
       {% endif%}
-
-
-
-
-
-
-
-
 
 
         <link rel="stylesheet" type="text/css" href="../static/style_new.css">
@@ -90,18 +47,6 @@
     	}
   </style>
   <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <center><img src="{{ url_for('static',filename='Search-Bar.png') }}"></center>
-  <br>
-  <br>
-
-
-
-
-
   <!-- ok this is the new search bar that actually works -->
   <style>
       .centered{
@@ -114,9 +59,18 @@
 </style>
 
 
-  <img  src="https://cdn.discordapp.com/attachments/430416753533648897/537397930382983172/Search-Bar.png%22%3E">
-  <input class="centered">
-<!--  -->
+<!--  --><form  action="{{url_for('display_result')}}" method="post">
+<div class="container" style=" position: relative; text-align: center;">
+  
+  <div class ="img-holder">
+  <img  src="{{ url_for('static',filename='Search-Bar-new.png') }}"> 
+  <input style="border: none ; outline: none; background-color: transparent;width: 420.99px; height: 114.99px;margin-left:70px;" class="centered" type="text" placeholder="SearchBar" name="data" aria-label="Search"></div>
+  <div><input type="image"  name="submit" src="{{ url_for('static',filename='button.png') }}"  border="0" alt="Submit"></div>
+  </div>
+  
+  
+  
+  <!--  --></form>
 
     
        <!-- Add JQuery and Bootstrap JS to the page -->
@@ -131,7 +85,7 @@
 
 
 <!-- here is where the login lies me lord -->
-
+</div>
 <script>
     function myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");

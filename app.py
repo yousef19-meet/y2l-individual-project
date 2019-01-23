@@ -25,6 +25,27 @@ def home(if_post="false"):
             return render_template('home.html', if_post = "false", log=log)
     else:
         return redirect(url_for('display_result'))
+#####################################################################################33
+
+@app.route('/searchResult',methods= ['GET','POST'])
+def display_result():
+    if('username' in login_session):
+        log = "true"
+    else:
+        log = "false"
+    if request.method == 'POST':
+        result = request.form['data']        
+        matches = search(result)
+        if len(matches) == 0:
+
+            flash('No matching results for: '+result)
+            return redirect(url_for('home'))
+            return render_template('searchResult.html',matches=matches,log=log)
+        else:
+            no_matches = False
+        return render_template('searchResult.html',matches=matches, no_matches=no_matches,log=log)
+    else:
+        return redirect(url_for('home'))
 
 
 

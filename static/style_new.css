@@ -90,6 +90,13 @@ body {
     position:absolute;
     left:-5px;
 }
+
+.status-bar:hover{
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
 .login {
     
     padding: 30px;
@@ -170,10 +177,24 @@ div.transbox p {
   font-weight: bold;
   color: #000000;
 }
+
+.img-holder {position: relative;}
+.img-holder .link {
+    position: absolute;
+    bottom: 10px; /*your button position*/
+    right: 10px; /*your button position*/
+}
 #submi{
 
+ 
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+
+    margin-bottom: 800px;
+    margin-right: 400px;
     color: white;
-    background-color: paleturquoise;
+
 }
 
 .JobRequests{
