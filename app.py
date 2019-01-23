@@ -1,17 +1,36 @@
 from database import *
 from flask import Flask, flash, render_template, url_for, redirect, request
 from flask import session as login_session
-#from flask.ext.session import Session
+from flask.ext.session import *
 app = Flask(__name__)
 app.secret_key = "VERY SECRET."
  
-@app.route('/')
-def home():
-    return render_template("home.html")
+
+
+########################### HOME ###########################
+
+
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/<string:if_post>' ,methods= ['GET','POST'])
+def home(if_post="false"):
+    if('username' in login_session):
+        log = "true"
+    else:
+        log = "false"
+
+    if request.method == 'GET':
+        if if_post == "true":
+            return render_template('home.html', if_post = "true",log=log)
+        else:
+            return render_template('home.html', if_post = "false", log=log)
+    else:
+        return redirect(url_for('display_result'))
 
 
 
 ########################### SIGNUP ###########################
+
+
 @app.route('/signup',methods= ['GET','POST'])
 def SignUp ():
     if('username' in login_session):
@@ -31,11 +50,11 @@ def SignUp ():
             return render_template("signup.html", error="u r bad")
         print(user,password)
         add_student(user,password)
-        return redirect(url_for('home'))
+        return redirect(url_for('Login'))
 @app.route('/logout')
 def logout():
-    return "hello"
-
+    login_session.clear()
+    return redirect(url_for('home'))
 
 
 ########################### LOGIN ###########################
@@ -65,3 +84,13 @@ def Login():
             return render_template('login.html', error = "username or password are not correct!")
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+########################### LOGOUT ###########################
+
+
+@app.route('/logout')
+def logout():
+    login_session.clear()
+    return redirect(url_for('home'))

@@ -12,10 +12,22 @@
        
        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
        
-       
+       {% if session['logged_in'] %}
+       <div class="hello">Hello , {{session['username']}}</div>
+       <a href="{{ url_for('logout')}}" class="btn btn-default">Logout </a>
+       {%else%}
+       <a href="{{ url_for('SignUp')}}" class="btn btn-default">SignUp </a>
+       <a href="{{ url_for('Login')}}" class="btn btn-default">Login </a>
+       {% endif%}
+      
+ 
 
     </head>
     <body>
+
+
+
+
 
       <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,6 +56,28 @@
           </form>
         </div>
       </nav> -->
+
+
+
+
+
+
+
+      {% if session['logged_in'] %}
+      <div class="hello">Hello , {{session['username']}}</div>
+
+
+      {% endif%}
+
+
+
+
+
+
+
+
+
+
         <link rel="stylesheet" type="text/css" href="../static/style_new.css">
       </body>
     <style>
@@ -63,14 +97,83 @@
     <center><img src="{{ url_for('static',filename='Search-Bar.png') }}"></center>
   <br>
   <br>
-    
-    
-    
+
+
+
+
+
+  <!-- ok this is the new search bar that actually works -->
+  <style>
+      .centered{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%)
+      }
+
+</style>
+
+
+  <img  src="https://cdn.discordapp.com/attachments/430416753533648897/537397930382983172/Search-Bar.png%22%3E">
+  <input class="centered">
+<!--  -->
+
     
        <!-- Add JQuery and Bootstrap JS to the page -->
        <!-- JQuery MUST BE BEFORE BOOTSTRAP -->
        <script src="{{ url_for('static', filename='bootstrap/jquery.js') }}"></script>
        <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.js') }}"></script>
+
+
+
+
+
+
+
+<!-- here is where the login lies me lord -->
+
+<script>
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+      return false;
+    }
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  
+  var log = '{{log}}';
+  
+  if (log=='false') {
+          var str1 = "Sign Up";
+          var result1 = str1.link("{{url_for('SignUp')}}");
+          document.getElementById("signup").classList.add("nav-link");
+          document.getElementById("signup").innerHTML = result1;
+      }
+  var str;
+  var result;
+  document.getElementById("demo").classList.add("nav-link");
+  if (log=='true') {
+      str = "Log Out";
+      result = str.link("{{url_for('logout')}}");
+      }
+  else{
+          str = "Log in";
+          result = str.link("{{url_for('Login')}}");
+      }
+  
+  console.log(result)
+  document.getElementById("demo").innerHTML = result;
+  
+  </script>
 
 </body>
 </html>

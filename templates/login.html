@@ -14,38 +14,31 @@
     left:50px;
   }
 </style>
-
+ 
+ <a href="{{ url_for('SignUp')}}" class="btn btn-default">SignUp </a>
 
 </head>
 <body>
 
-    <form method="post">
-        <br>
-        <br>
+   <div class= "container" > 
+       <form method="post">
+
         <div class="login">
-         <h2>Login:</h2>
+                <div><h2>Login:</h2></div>
        
-         <input type="text" name="username" placeholder="Username">
-         <br>
-         <br>
-         <input type="password" name="password" placeholder="Password">
-         <br>
-         <br>
-         <input type="submit" value="Login">
-         <br>
-         <br>
-         {{error}}
-         <br>
-         <br>
-         <a href="{{url_for('SignUp')}}">no account? sign up</a><br><br>
+         <div><input type="text" name="username" placeholder="Username"></div>
+
+         <div><input type="password" name="password" placeholder="Password"></div>
+
+         <div><button id="submi" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button><br></div>
+
+         <div><a href="{{url_for('SignUp')}}">no account? sign up</a></div>
        </div>
  <!-- ########################signup############################## -->
-       <div style="position:relative; top:-50; left:5;z-index:-1">
-         <img src="{{url_for('static',filename='BB_SITE1.png')}}" width=660 height=545p >
-       
-       </div>
+
        
        </form>
+    </div>
        <script>
        var log = '{{log}}';
        if (log=='false') {
@@ -71,6 +64,51 @@
        console.log(result)
        document.getElementById("demo").innerHTML = result;
        </script>
+
+       <!-- here is where the login lies me lord -->
+
+<script>
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+          return false;
+        }
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+      
+      var log = '{{log}}';
+      
+      if (log=='false') {
+              var str1 = "Sign Up";
+              var result1 = str1.link("{{url_for('SignUp')}}");
+              document.getElementById("signup").classList.add("nav-link");
+              document.getElementById("signup").innerHTML = result1;
+          }
+      var str;
+      var result;
+      document.getElementById("demo").classList.add("nav-link");
+      if (log=='true') {
+          str = "Log Out";
+          result = str.link("{{url_for('logout')}}");
+          }
+      else{
+              str = "Log in";
+              result = str.link("{{url_for('Login')}}");
+          }
+      
+      console.log(result)
+      document.getElementById("demo").innerHTML = result;
+      
+      </script>
        
        </body>
        </html>       
