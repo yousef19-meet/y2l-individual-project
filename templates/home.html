@@ -63,12 +63,19 @@
 <div class="container" style=" position: relative; text-align: center;">
   
   <div class ="img-holder">
-  <img  src="{{ url_for('static',filename='Search-Bar-new.png') }}"> 
+
+  <img  class = "image1" src="{{ url_for('static',filename='Search-Bar-new.png') }}" >
+
   <input style="border: none ; outline: none; background-color: transparent;width: 420.99px; height: 114.99px;margin-left:70px;" class="centered" type="text" placeholder="SearchBar" name="data" aria-label="Search"></div>
-  <div><input type="image"  name="submit" src="{{ url_for('static',filename='button.png') }}"  border="0" alt="Submit"></div>
+  
+  <input class= "image2" type="image"  name="submit" src="{{ url_for('static',filename='button.png') }}"  border="0" alt="Submit">
   </div>
   
-  
+  <!-- <div class="container">
+    <img src="img_snow.jpg" alt="Snow">
+    <button class="btn">Button</button>
+  </div>
+   -->
   
   <!--  --></form>
 
@@ -77,6 +84,24 @@
        <!-- JQuery MUST BE BEFORE BOOTSTRAP -->
        <script src="{{ url_for('static', filename='bootstrap/jquery.js') }}"></script>
        <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.js') }}"></script>
+</div>
+
+
+
+<!-- search results in here me lord -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -85,7 +110,6 @@
 
 
 <!-- here is where the login lies me lord -->
-</div>
 <script>
     function myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");

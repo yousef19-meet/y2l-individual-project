@@ -178,8 +178,20 @@ div.transbox p {
   color: #000000;
 }
 
-.img-holder {position: relative;}
+.img-holder {position: relative;
+
+}
+.image1{
+    position: relative;
+}
+.image2{
+    position: absolute;
+    top:5.95px;
+    left:294px;
+}
+
 .img-holder .link {
+    background-image: url("Search-Bar-new.png");
     position: absolute;
     bottom: 10px; /*your button position*/
     right: 10px; /*your button position*/

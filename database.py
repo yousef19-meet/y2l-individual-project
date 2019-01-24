@@ -23,3 +23,22 @@ def add_student(user,password):
     session.commit()
 
 print([a.username for a in session.query(User).all()])
+
+
+import requests
+# response = requests.get("https://api-v3.igdb.com",userkey="f0843654863c9bc9fa6a02e2cd479048")
+
+response = requests.get("https://api-v3.igdb.com/games/",
+  headers={
+    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+  }
+)
+print (response.content)
+
+# from igdb_api_python.igdb import igdb
+
+# igdb = igdb("f0843654863c9bc9fa6a02e2cd479048")
+# result = igdb.games(1)
+
+# for game in result.body:
+#     print("Retrieved: " + game["name"])
