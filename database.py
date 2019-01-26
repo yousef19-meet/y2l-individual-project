@@ -22,23 +22,63 @@ def add_student(user,password):
     session.add(new_user)
     session.commit()
 
-print([a.username for a in session.query(User).all()])
+# print([a.username for a in session.query(User).all()])
 
 
-import requests
+
 # response = requests.get("https://api-v3.igdb.com",userkey="f0843654863c9bc9fa6a02e2cd479048")
+##################################################################################################
+import requests,json
 
-response = requests.get("https://api-v3.igdb.com/games/",
+
+############################################## name ####################################################
+response = requests.get("https://api-v3.igdb.com/games/1942?fields=name",
+  headers={
+    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+
+  }
+)
+print (response.content)
+############################################## slug/keyword ####################################################
+SLUG_response = requests.get("https://api-v3.igdb.com/games/1942?fields=slug",
   headers={
     "user-key": "f0843654863c9bc9fa6a02e2cd479048"
   }
 )
-print (response.content)
+print (SLUG_response.content)
+############################################## rating ####################################################
+RATING_response = requests.get("https://api-v3.igdb.com/games/1942?fields=rating",
+  headers={
+    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+  }
+)
+print (RATING_response.content)
+############################################## sotryline ####################################################
+STORYLINE_response = requests.get("https://api-v3.igdb.com/games/1942?fields=storyline",
+  headers={
+    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+  }
+)
+print (STORYLINE_response.content)
+############################################## summary ####################################################
+SUMMARY_response = requests.get("https://api-v3.igdb.com/games/1942?fields=summary",
+  headers={
+    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+  }
+)
+print (SUMMARY_response.content)
 
+##############################################################################################################################
+# # print(response.content)
+# parsed_content = json.loads(response.content)
+# print(parsed_content[0]['url'])
+# resp = requests.get(parsed_content[0]['url'])
+# # print(resp.text)
+# Sresult = resp.text.find('https://images.igdb.com/igdb/image/upload/t_cover_big/')
+# print(resp.text[Sresult:Sresult + 78])
+# print (response.content)
 # from igdb_api_python.igdb import igdb
-
 # igdb = igdb("f0843654863c9bc9fa6a02e2cd479048")
 # result = igdb.games(1)
-
 # for game in result.body:
 #     print("Retrieved: " + game["name"])

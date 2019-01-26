@@ -2,6 +2,7 @@ from database import *
 from flask import Flask, flash, render_template, url_for, redirect, request
 from flask import session as login_session
 from flask.ext.session import *
+import requests,json
 app = Flask(__name__)
 app.secret_key = "VERY SECRET."
  
@@ -9,6 +10,32 @@ app.secret_key = "VERY SECRET."
 
 ########################### HOME ###########################
 
+
+def search(data):
+	return session.query(Post).filter(Post.description.contains(data)).all()
+def search(data):
+    
+
+
+############################################################
+response = requests.get("https://api-v3.igdb.com/games/4563?fields=url",
+  headers={
+    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+
+  }
+)
+
+# print(response.content)
+parsed_content = json.loads(response.content)
+print(parsed_content[0]['url'])
+
+resp = requests.get(parsed_content[0]['url'])
+# print(resp.text)
+
+Sresult = resp.text.find('https://images.igdb.com/igdb/image/upload/t_cover_big/')
+
+imgsrc = resp.text[Sresult:Sresult + 78]
+######################################################################################
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/<string:if_post>' ,methods= ['GET','POST'])
@@ -20,9 +47,9 @@ def home(if_post="false"):
 
     if request.method == 'GET':
         if if_post == "true":
-            return render_template('home.html', if_post = "true",log=log)
+            return render_template('home.html', if_post = "true",log=log, imgsrc = imgsrc)
         else:
-            return render_template('home.html', if_post = "false", log=log)
+            return render_template('home.html', if_post = "false", log=log, imgsrc = imgsrc)
     else:
         return redirect(url_for('display_result'))
 #####################################################################################33
@@ -33,8 +60,11 @@ def display_result():
         log = "true"
     else:
         log = "false"
+
     if request.method == 'POST':
-        result = request.form['data']        
+
+        result = request.form['data']  
+
         matches = search(result)
         if len(matches) == 0:
 
@@ -115,3 +145,14 @@ if __name__ == '__main__':
 def logout():
     login_session.clear()
     return redirect(url_for('home'))
+
+
+
+
+
+
+
+##############################################################
+
+
+
