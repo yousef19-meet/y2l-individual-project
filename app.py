@@ -12,30 +12,58 @@ app.secret_key = "VERY SECRET."
 
 
 def search(data):
-	return session.query(Post).filter(Post.description.contains(data)).all()
-def search(data):
+	
+    url = "https://api-v3.igdb.com/games/?search=" + str(data) + "&fields=id,name,cover"
+    print("-------------------")
+    print("URL",url)
+    RATING_response = requests.get(url,
+     headers={
+      "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+     }
+    )
     
-
+    final_response = json.loads(RATING_response.content)
+    # print("////////////////////////////////////////")
+    # print(final_response)
+    for i in range (len(final_response)):
+        id_atr =(final_response[i]['id'])
+        name_atr =(final_response[i]['name'])
+        print (id_atr)
+        print(name_atr)
+################################test
+        img_url = "https://api-v3.igdb.com/games/" + str(id_atr) + "?fields=url"
+        response = requests.get(img_url,   
+        headers={
+            "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+            }
+        )
+        parsed_content = json.loads(response.content)
+        resp = requests.get(parsed_content[0]['url'])
+        Sresult = resp.text.find('https://images.igdb.com/igdb/image/upload/t_cover_big/')
+        imgsrc = resp.text[Sresult:Sresult + 78]
+        img_list=[]
+        img_list.append(imgsrc)
+    return render_template('searchresult.html', final_response= final_response, img_list=img_list) 
 
 ############################################################
-response = requests.get("https://api-v3.igdb.com/games/4563?fields=url",
-  headers={
-    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+# response = requests.get("https://api-v3.igdb.com/games/1943?fields=url",headers=
+#     {
+#         "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+#     }
+# )
 
-  }
-)
+# # print(response.content)
+# parsed_content = json.loads(response.content)
+# # print(parsed_content[0]['url'])
 
-# print(response.content)
-parsed_content = json.loads(response.content)
-print(parsed_content[0]['url'])
+# resp = requests.get(parsed_content[0]['url'])
+# # print(resp.text)
+# # print(parsed_content[0]['url'])
 
-resp = requests.get(parsed_content[0]['url'])
-# print(resp.text)
+# Sresult = resp.text.find('https://images.igdb.com/igdb/image/upload/t_cover_big/')
 
-Sresult = resp.text.find('https://images.igdb.com/igdb/image/upload/t_cover_big/')
-
-imgsrc = resp.text[Sresult:Sresult + 78]
-######################################################################################
+# imgsrc = resp.text[Sresult:Sresult + 78]
+#####################################################################################
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/<string:if_post>' ,methods= ['GET','POST'])
@@ -47,9 +75,9 @@ def home(if_post="false"):
 
     if request.method == 'GET':
         if if_post == "true":
-            return render_template('home.html', if_post = "true",log=log, imgsrc = imgsrc)
+            return render_template('home.html', if_post = "true",log=log)
         else:
-            return render_template('home.html', if_post = "false", log=log, imgsrc = imgsrc)
+            return render_template('home.html', if_post = "false", log=log)
     else:
         return redirect(url_for('display_result'))
 #####################################################################################33
@@ -63,17 +91,18 @@ def display_result():
 
     if request.method == 'POST':
 
-        result = request.form['data']  
+        data = request.form['data']  
 
-        matches = search(result)
+        matches = search(data)
+        print("MATCHES",matches)
         if len(matches) == 0:
 
-            flash('No matching results for: '+result)
+            flash('No matching results for: '+data)
             return redirect(url_for('home'))
-            return render_template('searchResult.html',matches=matches,log=log)
+            #return render_template('home.html',matches=matches,log=log)
         else:
             no_matches = False
-        return render_template('searchResult.html',matches=matches, no_matches=no_matches,log=log)
+        return render_template('searchresult.html',matches=matches, no_matches=no_matches,log=log)
     else:
         return redirect(url_for('home'))
 

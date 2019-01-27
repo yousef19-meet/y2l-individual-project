@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Final Project</title>
+        <link rel="stylesheet" type="text/css" href="../static/style_new.css">
+        <!-- Required tags to make the website responsive-->
+              <!-- Required tags to make the website responsive-->
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+       <!-- Add Bootstrap CSS to the page -->
+       
+       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
+<!-- #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@ -->
+       {% if session['logged_in'] %}
+       
+       <div class="hello">Hello , {{session['username']}}</div>
+       <a href="{{ url_for('logout')}}" class="btn btn-outline-primary">Logout </a>
+      
+       {%else%}
+       
+       <a href="{{ url_for('SignUp')}}" class="btn btn-outline-primary">SignUp </a>
+       <a href="{{ url_for('Login')}}" class="btn btn-outline-primary">Login </a>
+      
+       {% endif%}
+    </head>
+    <body>
+<!-- #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@ -->
+
+
+
+
+
+
+
+
+
+
+
+<img id="gamelogo" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@ -->
+<script>
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        return false;
+    }
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+
+  
+</script>    <body>
+
+   <div class= "containter"><form method="POST">
+    
+    <div class="login">
+            
+            <div><h2>SignUp:</h2></div>
+    
+        <div><input type="text" name="user" placeholder="Username"></div>
+       
+        <div><input type="password" name="password" placeholder="Password"></div>
+    
+    
+    
+        <div><button id="submi" class="btn btn-outline-success my-2 my-sm-0" type="submit">SignUp</button><br><br></div>
+   
+    </div>
+</form>
+</div>
+<script>
+      // Sign up
+var log = '{{log}}';
+if (log=='false') {
+        var str1 = "Sign Up";
+        var result1 = str1.link("{{url_for('SignUp')}}");
+        document.getElementById("signup").classList.add("nav-link");
+        document.getElementById("signup").innerHTML = result1;
+    }
+
+
+var str;
+var result;
+document.getElementById("demo").classList.add("nav-link");
+if (log=='true') {
+    str = "Log Out";
+    result = str.link("{{url_for('logout')}}");
+    }
+else{
+        str = "Log in";
+        result = str.link("{{url_for('SignUp')}}");
+    }
+
+console.log(result)
+document.getElementById("demo").innerHTML = result;
+
+</script>
+
+<!-- here is where the login lies me lord -->
+
+<script>
+        function myFunction() {
+          document.getElementById("myDropdown").classList.toggle("show");
+          return false;
+        }
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+      
+      var log = '{{log}}';
+      
+      if (log=='false') {
+              var str1 = "Sign Up";
+              var result1 = str1.link("{{url_for('SignUp')}}");
+              document.getElementById("signup").classList.add("nav-link");
+              document.getElementById("signup").innerHTML = result1;
+          }
+      var str;
+      var result;
+      document.getElementById("demo").classList.add("nav-link");
+      if (log=='true') {
+          str = "Log Out";
+          result = str.link("{{url_for('logout')}}");
+          }
+      else{
+              str = "Log in";
+              result = str.link("{{url_for('Login')}}");
+          }
+      
+      console.log(result)
+      document.getElementById("demo").innerHTML = result;
+      
+      </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 from model import *
-
+from flask import Flask, flash, render_template, url_for, redirect, request
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -32,44 +32,49 @@ import requests,json
 
 
 ############################################## name ####################################################
-response = requests.get("https://api-v3.igdb.com/games/1942?fields=name",
-  headers={
-    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+# response = requests.get("https://api-v3.igdb.com/games/1942?fields=name",
+#   headers={
+#     "user-key": "f0843654863c9bc9fa6a02e2cd479048"
 
-  }
-)
-print (response.content)
-############################################## slug/keyword ####################################################
-SLUG_response = requests.get("https://api-v3.igdb.com/games/1942?fields=slug",
-  headers={
-    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
-  }
-)
-print (SLUG_response.content)
-############################################## rating ####################################################
-RATING_response = requests.get("https://api-v3.igdb.com/games/1942?fields=rating",
-  headers={
-    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
-  }
-)
-print (RATING_response.content)
-############################################## sotryline ####################################################
-STORYLINE_response = requests.get("https://api-v3.igdb.com/games/1942?fields=storyline",
-  headers={
-    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
-  }
-)
-print (STORYLINE_response.content)
-############################################## summary ####################################################
-SUMMARY_response = requests.get("https://api-v3.igdb.com/games/1942?fields=summary",
-  headers={
-    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
-  }
-)
-print (SUMMARY_response.content)
+#   }
+# )
+# print (response.content)
+# ############################################## slug/keyword ####################################################
+# SLUG_response = requests.get("https://api-v3.igdb.com/games/1942?fields=slug",
+#   headers={
+#     "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+#   }
+# )
+# print (SLUG_response.content)4
 
-##############################################################################################################################
-# # print(response.content)
+# ############################################## sotryline ####################################################
+# STORYLINE_response = requests.get("https://api-v3.igdb.com/games/1942?fields=storyline",
+#   headers={
+#     "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+#   }
+# )
+# print (STORYLINE_response.content)
+
+# url = "https://api-v3.igdb.com/games/?search=" + "l" + "&fields=id,name"
+# print("-------------------")
+# print("URL",url)
+# RATING_response = requests.get(url,
+#   headers={
+#   "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+#   }
+# )
+# final_response = RATING_response.content
+# print(final_response)
+# # ############################################# summary ####################################################
+# SUMMARY_response = requests.get("https://api-v3.igdb.com/games/count?fields=summary",
+#   headers={
+#     "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+#   }
+# )
+# print (SUMMARY_response.content)
+
+# ##############################################################################################################################
+# # # print(response.content)
 # parsed_content = json.loads(response.content)
 # print(parsed_content[0]['url'])
 # resp = requests.get(parsed_content[0]['url'])
