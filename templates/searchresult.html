@@ -37,9 +37,14 @@
 <!-- #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@ -->
 
 
-  
+{% for game in matches %}
+Name : {{game["name"]}}<br>
+Image : <img src="{{game['image']}}"><br>
+<!-- Show game details -->
+{% endfor %}
 
-<script>
+
+<!-- <script>
     function image_print(){
           var imgsrc = '{{img_list}}';
           console.log(imgsrc);
@@ -80,6 +85,6 @@
           document.getElementById("demo").innerHTML = result;
         
           
-          </script>
+          </script> -->
 </body>
 </html>

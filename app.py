@@ -1,7 +1,7 @@
 from database import *
 from flask import Flask, flash, render_template, url_for, redirect, request
 from flask import session as login_session
-from flask.ext.session import *
+from flask_session import *
 import requests,json
 app = Flask(__name__)
 app.secret_key = "VERY SECRET."
@@ -44,8 +44,10 @@ def search(data):
         imgsrc = resp.text[Sresult:Sresult + 78]
         
         img_list.append(imgsrc)
-        # print(img_list)
-    return render_template('searchresult.html', final_response= final_response, img_list=img_list) 
+
+    for game,image in zip(final_response,img_list):
+        game["image"] = image
+    return (final_response)
 
 ############################################################
 # response = requests.get("https://api-v3.igdb.com/games/1943?fields=url",headers=
@@ -96,7 +98,10 @@ def display_result():
         data = request.form['data']  
 
         matches = search(data)
-        print("MATCHES",matches)
+        print("MATCHES : " +str(matches))
+        print("====================================================================")
+        print("Name 1 : " + matches[0]['name'])
+        print("====================================================================")
         if len(matches) == 0:
 
             flash('No matching results for: '+data)
