@@ -25,11 +25,12 @@ def search(data):
     final_response = json.loads(RATING_response.content)
     # print("////////////////////////////////////////")
     # print(final_response)
+    img_list=[]
     for i in range (len(final_response)):
         id_atr =(final_response[i]['id'])
         name_atr =(final_response[i]['name'])
-        print (id_atr)
-        print(name_atr)
+        # print (id_atr)
+        # print(name_atr)
 ################################test
         img_url = "https://api-v3.igdb.com/games/" + str(id_atr) + "?fields=url"
         response = requests.get(img_url,   
@@ -41,8 +42,9 @@ def search(data):
         resp = requests.get(parsed_content[0]['url'])
         Sresult = resp.text.find('https://images.igdb.com/igdb/image/upload/t_cover_big/')
         imgsrc = resp.text[Sresult:Sresult + 78]
-        img_list=[]
+        
         img_list.append(imgsrc)
+        # print(img_list)
     return render_template('searchresult.html', final_response= final_response, img_list=img_list) 
 
 ############################################################

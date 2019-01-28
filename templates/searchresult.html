@@ -34,42 +34,25 @@
 
 
 
-
-{% for i in list_length%}
-<img id="gamelogo" >
-{%endfor%}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@ -->
 
 
   
 
 <script>
+    function image_print(){
           var imgsrc = '{{img_list}}';
-          var imgE = document.getElementById('gamelogo');
-          var i;
-          var list_length = img_list.length;
-          for (i=0;i < list_length;i++);{
-            imgE.setAttribute('src',img_list[i]);
+          console.log(imgsrc);
+          var img_list;
+         
+          for (var i=0;i < imgsrc.amount();i++);{
+            var x = document.createElement("img");
+            x.setAttribute('src', imgscr[i]);
+            
+             document.body.appendChild(x);
           }
-
+        }
+        image_print();
           // 
         //  
         
