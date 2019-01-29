@@ -18,10 +18,11 @@
        <a href="{{ url_for('logout')}}" class="btn btn-outline-primary">Logout </a>
       
        {%else%}
-       
+    </div>
+    <div>
        <a href="{{ url_for('SignUp')}}" class="btn btn-outline-primary">SignUp </a>
        <a href="{{ url_for('Login')}}" class="btn btn-outline-primary">Login </a>
-      
+    </div>
        {% endif%}
     </head>
     <body>
@@ -36,13 +37,25 @@
 
 <!-- #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@ -->
 
+<!-- <div class="container">
+  <img src="img_avatar.png" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">Hello World</div>
+  </div>
+</div> -->
+
 
 {% for game in matches %}
-Name : {{game["name"]}}<br>
-Image : <img src="{{game['image']}}"><br>
-<!-- Show game details -->
+    <div class="container" style= "float:left">
+        <img class=game_img src="{{game['image']}}">
+        <div class="overlay">
+            <div class="text">
+            {{game["name"]}} 
+            {{game["sum"]}}    
+            </div>
+        </div>
+    </div>
 {% endfor %}
-
 
 <!-- <script>
     function image_print(){

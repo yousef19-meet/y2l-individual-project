@@ -13,9 +13,9 @@ app.secret_key = "VERY SECRET."
 
 def search(data):
 	
-    url = "https://api-v3.igdb.com/games/?search=" + str(data) + "&fields=id,name,cover"
-    print("-------------------")
-    print("URL",url)
+    url = "https://api-v3.igdb.com/games/?search=" + str(data) + "&fields=id,name,summary"
+    # print("-------------------")
+    # print("URL",url)
     RATING_response = requests.get(url,
      headers={
       "user-key": "f0843654863c9bc9fa6a02e2cd479048"
@@ -29,6 +29,7 @@ def search(data):
     for i in range (len(final_response)):
         id_atr =(final_response[i]['id'])
         name_atr =(final_response[i]['name'])
+        sum_atr= (final_response[i]['summary'])
         # print (id_atr)
         # print(name_atr)
 ################################test
@@ -45,8 +46,10 @@ def search(data):
         
         img_list.append(imgsrc)
 
-    for game,image in zip(final_response,img_list):
+    for game,summary,image in zip(final_response,final_response,img_list):
+        game['summary']= summary
         game["image"] = image
+        
     return (final_response)
 
 ############################################################
@@ -98,10 +101,10 @@ def display_result():
         data = request.form['data']  
 
         matches = search(data)
-        print("MATCHES : " +str(matches))
-        print("====================================================================")
-        print("Name 1 : " + matches[0]['name'])
-        print("====================================================================")
+        # print("MATCHES : " +str(matches))
+        # print("====================================================================")
+        # print("Name 1 : " + matches[0]['name'])
+        # print("====================================================================")
         if len(matches) == 0:
 
             flash('No matching results for: '+data)

@@ -1,3 +1,9 @@
+
+.game_name {
+    font-size: 30px;
+    font-family: "Courier New", Courier New, Monospace;
+}
+
 .dropbtn {
     background-color: #3498DB;
     color: white;
@@ -10,7 +16,59 @@
     
 
 }
+/* .game_iamge{
+    border: 2px solid red;
+    
+    border-top-left-radius: 2em 0.5em;
+    border-top-right-radius: 1em 3em;
+    border-bottom-right-radius: 4em 0.5em;
+    border-bottom-left-radius: 1em 3em;
+} */
+/* @!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@! */
+.container {
+    position: relative;
+    width: 50%;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+  }
+  .container:hover .overlay {
+    opacity: 1;
+  }
+  
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 
+
+
+/* @!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@! */
+.game_img{
+    margin-top: 20px;
+    margin-left:10px ;
+    max-width:370px;
+    max-height:235px;
+    width: auto;
+    height: auto;
+    border-radius: 5%;
+}
 .dropbtn:hover, .dropbtn:focus {
     background-color: #2980B9;
   
