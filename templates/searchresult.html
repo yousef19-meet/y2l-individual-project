@@ -46,12 +46,12 @@
 
 
 {% for game in matches %}
-    <div class="container" style= "float:left">
+    <div class="container" style= "">
         <img class=game_img src="{{game['image']}}">
         <div class="overlay">
             <div class="text">
-            {{game["name"]}} 
-            {{game["summary"]}}    
+            {{game["name"]}} <br>
+            {{game['summary']}} 
             </div>
         </div>
     </div>

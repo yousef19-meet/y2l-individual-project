@@ -25,7 +25,7 @@
     border-bottom-left-radius: 1em 3em;
 } */
 /* @!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@! */
-.container {
+.container{
     position: relative;
     width: 50%;
   }
@@ -245,8 +245,10 @@ div.transbox p {
 .image2{
     position: absolute;
     top:5.95px;
-    left:294px;
+    left:493px;
+    
 }
+
 
 .img-holder .link {
     background-image: url("Search-Bar-new.png");

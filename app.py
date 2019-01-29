@@ -32,6 +32,7 @@ def search(data):
         sum_atr= (final_response[i]['summary'])
         # print (id_atr)
         # print(name_atr)
+        #print(sum_atr)
 ################################test
         img_url = "https://api-v3.igdb.com/games/" + str(id_atr) + "?fields=url"
         response = requests.get(img_url,   
@@ -46,11 +47,14 @@ def search(data):
         
         img_list.append(imgsrc)
 
-    for game,summary,image in zip(final_response,final_response,img_list):
-        game['summary']= summary
+    # for game,summary,image in zip(final_response,final_response,img_list):
+    #     game["summary"]= summary
+    #     game["image"] = image
+    # return (final_response)
+    for game,image in zip(final_response,img_list):
         game["image"] = image
-        
     return (final_response)
+
 
 ############################################################
 # response = requests.get("https://api-v3.igdb.com/games/1943?fields=url",headers=

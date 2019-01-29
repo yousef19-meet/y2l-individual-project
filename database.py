@@ -48,12 +48,12 @@ import requests,json
 # print (SLUG_response.content)4
 
 # ############################################## sotryline ####################################################
-# STORYLINE_response = requests.get("https://api-v3.igdb.com/games/1942?fields=storyline",
+# STORYLINE_response = requests.get("https://api-v3.igdb.com/games/1942?fields=*",
 #   headers={
 #     "user-key": "f0843654863c9bc9fa6a02e2cd479048"
 #   }
 # )
-# print (STORYLINE_response.content)
+# print (json.loads(STORYLINE_response.content))
 
 # url = "https://api-v3.igdb.com/games/?search=" + "l" + "&fields=id,name"
 # print("-------------------")
