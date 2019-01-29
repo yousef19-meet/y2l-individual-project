@@ -11,64 +11,91 @@
        <!-- Add Bootstrap CSS to the page -->
        
        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
-       
-       {% if session['logged_in'] %}
-       
-       <div class="hello">Hello , {{session['username']}}</div>
-       <a href="{{ url_for('logout')}}" class="btn btn-outline-primary">Logout </a>
+       <style>
+            h1{
+                font-size: 50px;
+                font-family: "Courier New", Courier New, Monospace;
+                position:absolute;
+                top:50px;
+                left:50px;
+            }
+      </style>
+      <style>
+            .centered{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%)
+            }
       
-       {%else%}
+      </style>
        
-       <a href="{{ url_for('SignUp')}}" class="btn btn-outline-primary">SignUp </a>
-       <a href="{{ url_for('Login')}}" class="btn btn-outline-primary">Login </a>
-      
-       {% endif%}
+       
       
  
 
     </head>
-    <body>
 
-      <div width= 100%>
-      {% if session['logged_in'] %}
-      <div class="hello">Hello , {{session['username']}}</div>
-      {% endif%}
-
+      
 
         <link rel="stylesheet" type="text/css" href="../static/style_new.css">
-      </body>
-    <style>
-    	h1{
-    		font-size: 50px;
-    		font-family: "Courier New", Courier New, Monospace;
-    		position:absolute;
-    		top:50px;
-    		left:50px;
-    	}
-  </style>
+    
   <body>
   <!-- ok this is the new search bar that actually works -->
-  <style>
-      .centered{
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%)
-      }
-
-</style>
+  
+<!-- !@@!@!@!@!@@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@ -->
+        
+  
 
 
-<!--  --><form  action="{{url_for('display_result')}}" method="post">
+<nav style=" height: 50px; " class="navbar navbar-expand-lg navbar-light bg-light">
+        <a style="margin-left: 35%;" class="navbar-brand abc" href="#"><img style="height: 50px; width: 50px;" src="{{ url_for('static',filename='logo1212.png') }}" width=100px height=100px id="image"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul style="margin-right: 35%;" class="navbar-nav mr-auto">
+                    {% if session['logged_in'] %}
+                    <div class="hello">Hello , {{session['username']}}</div>
+                    <li>
+                        <a href="{{ url_for('logout')}}" class="nav-link abc">Logout </a>
+                    </li>
+                    {%else%}
+                    <li>
+                        <a href="{{ url_for('SignUp')}}" class="nav-link abc">SignUp </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('Login')}}" class="nav-link abc">Login </a>
+                    </li>
+                    {% endif%}
+                     <div width= 100%>
+                     {% if session['logged_in'] %}
+                     <div class="hello">Hello , {{session['username']}}</div>
+                     {% endif%}
+          </ul>
+        </div>
+</nav>
+
+
+
+
+
+
+
+
+
+<!-- !@@!@!@!@!@@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@ -->
+<!--  --><form style="margin-top: 40vh;"  action="{{url_for('display_result')}}" method="post">
 <div class="container3" style=" position: relative; text-align: center;">
   
   <div class ="img-holder">
 
-  <img  class = "image1" style="margin-left:200;" src="{{ url_for('static',filename='Search-Bar-new.png') }}" >
+  <!-- <img  class = "image1" style="margin-left:200;" src="{{ url_for('static',filename='Search-Bar-new.png') }}" > -->
 
-  <input style="border: none ; outline: none; background-color: transparent;width: 420.99px; height: 114.99px;margin-left:70px;" class="centered" type="text" placeholder="SearchBar" name="data" aria-label="Search"></div>
+  <input class="centered" type="search" placeholder="SearchBar" name="data" aria-label="Search"></div>
   
-  <input class= "image2" type="image"  name="submit" src="{{ url_for('static',filename='button.png') }}"  border="0" alt="Submit">
+  <!-- <input class= "image2" type="image"  name="submit" src="{{ url_for('static',filename='button.png') }}"  border="0" alt="Submit"> -->
   </div>
   
   <!-- <div class="container">

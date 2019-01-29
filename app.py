@@ -13,7 +13,7 @@ app.secret_key = "VERY SECRET."
 
 def search(data):
 	
-    url = "https://api-v3.igdb.com/games/?search=" + str(data) + "&fields=id,name,summary"
+    url = "https://api-v3.igdb.com/games/?search=" + str(data) + "&fields=id,name,summary,url"
     # print("-------------------")
     # print("URL",url)
     RATING_response = requests.get(url,
@@ -23,8 +23,8 @@ def search(data):
     )
     
     final_response = json.loads(RATING_response.content)
-    # print("////////////////////////////////////////")
-    # print(final_response)
+    print("////////////////////////////////////////")
+    print(final_response)
     img_list=[]
     for i in range (len(final_response)):
         id_atr =(final_response[i]['id'])
@@ -34,17 +34,18 @@ def search(data):
         # print(name_atr)
         #print(sum_atr)
 ################################test
-        img_url = "https://api-v3.igdb.com/games/" + str(id_atr) + "?fields=url"
-        response = requests.get(img_url,   
-        headers={
-            "user-key": "f0843654863c9bc9fa6a02e2cd479048"
-            }
-        )
-        parsed_content = json.loads(response.content)
-        resp = requests.get(parsed_content[0]['url'])
+        #img_url = "https://api-v3.igdb.com/games/" + str(id_atr) + "?fields=url"
+        #response = requests.get(img_url,   
+        #headers={
+        #    "user-key": "f0843654863c9bc9fa6a02e2cd479048"
+        #    }
+        #)
+        #parsed_content = json.loads(response.content)
+        resp = requests.get(final_response[i]['url'])
         Sresult = resp.text.find('https://images.igdb.com/igdb/image/upload/t_cover_big/')
-        imgsrc = resp.text[Sresult:Sresult + 78]
-        
+        imgsrc =  resp.text[Sresult:Sresult + 78]
+        print(imgsrc,"IMAGE SOURCE")
+
         img_list.append(imgsrc)
 
     # for game,summary,image in zip(final_response,final_response,img_list):
@@ -145,10 +146,6 @@ def SignUp ():
         print(user,password)
         add_student(user,password)
         return redirect(url_for('Login'))
-@app.route('/logout')
-def logout():
-    login_session.clear()
-    return redirect(url_for('home'))
 
 
 ########################### LOGIN ###########################
@@ -183,11 +180,6 @@ if __name__ == '__main__':
 
 ########################### LOGOUT ###########################
 
-
-@app.route('/logout')
-def logout():
-    login_session.clear()
-    return redirect(url_for('home'))
 
 
 
