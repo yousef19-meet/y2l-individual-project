@@ -173,21 +173,15 @@ def Login():
 
         else:
             return render_template('login.html', error = "username or password are not correct!")
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
 
 ########################### LOGOUT ###########################
 
 
+@app.route('/logout')
+def logout():
+    login_session.clear()
+    return redirect(url_for('home'))
 
-
-
-
-
-
-##############################################################
-
-
-
+    
+if __name__ == '__main__':
+    app.run(debug=True)
