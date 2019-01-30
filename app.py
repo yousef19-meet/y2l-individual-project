@@ -29,7 +29,7 @@ def search(data):
     for i in range (len(final_response)):
         id_atr =(final_response[i]['id'])
         name_atr =(final_response[i]['name'])
-        sum_atr= (final_response[i]['summary'])
+        # sum_atr= (final_response[i]['summary'])
         # print (id_atr)
         # print(name_atr)
         #print(sum_atr)
