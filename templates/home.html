@@ -11,6 +11,7 @@
        <!-- Add Bootstrap CSS to the page -->
        
        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
        <style>
             h1{
                 font-size: 50px;
@@ -27,7 +28,7 @@
                 left: 50%;
                 transform: translate(-50%, -50%)
             }
-      
+            
       </style>
        
        
@@ -71,7 +72,7 @@
                     {% endif%}
                      <div width= 100%>
                      {% if session['logged_in'] %}
-                     <div class="hello">Hello , {{session['username']}}</div>
+                     <div style="color: white; font-weight: bold;" class="hello">Hello , {{session['username']}}</div>
                      {% endif%}
           </ul>
         </div>
@@ -86,32 +87,25 @@
 
 
 <!-- !@@!@!@!@!@@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@ -->
-<!--  --><form style="margin-top: 40vh;"  action="{{url_for('display_result')}}" method="post">
+<!--  --><form onsubmit="sumbt()" style="margin-top: 40vh;"  action="{{url_for('display_result')}}" method="post">
 <div class="container3" style=" position: relative; text-align: center;">
-  
   <div class ="img-holder">
-
-  <!-- <img  class = "image1" style="margin-left:200;" src="{{ url_for('static',filename='Search-Bar-new.png') }}" > -->
-
-  <input class="centered ayy2" type="search" placeholder="SearchBar" name="data" aria-label="Search" autocomplete="off"></div>
-  
-  <!-- <input class= "image2" type="image"  name="submit" src="{{ url_for('static',filename='button.png') }}"  border="0" alt="Submit"> -->
+    <input id="srchh"  class="centered ayy2" type="search" placeholder="SearchBar" name="data" aria-label="Search" autocomplete="off"></div>
   </div>
-  
-  <!-- <div class="container">
-    <img src="img_snow.jpg" alt="Snow">
-    <button class="btn">Button</button>
-  </div>
-   -->
-  
-  <!--  --></form>
+ </form>
+
+ 
 
     
        <!-- Add JQuery and Bootstrap JS to the page -->
        <!-- JQuery MUST BE BEFORE BOOTSTRAP -->
-       <script src="{{ url_for('static', filename='bootstrap/jquery.js') }}"></script>
-       <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.js') }}"></script>
+       
 </div>
+<div id="spinnerr" style="color: darkred !important; width: 10vw; height: 10vw; margin-top: 60vh; margin-left: 45vw; margin-right: 45vw; " class="spinner-border text-danger" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+
+
 
 
 
@@ -137,56 +131,68 @@
 
 
 <!-- here is where the login lies me lord -->
-<script>
-//   var imgsrc = '{{imgsrc}}';
-//   var imgE = document.getElementById('gamelogo');
-//   imgE.setAttribute('src',imgsrc);
-//   // 
-// //  
-var imgArray = new Array();
 
-imgArray[0] = new Image();
-imgArray[0].src = '../static/argy_bg.jpg';
-imgArray[1] = new Image();
-imgArray[1].src = '../static/spino_bg.jpg';
-imgArray[2] = new Image();
-imgArray[2].src = '../static/LOL.png';
-imgArray[3] = new Image();
-imgArray[3].src = '../static/R6S.png';
-imgArray[4] = new Image();
-imgArray[4].src = '../static/RL.png';
-
-
-document.body.style.backgroundImage = "url("+ imgArray[ Math.floor((Math.random() * 4))].src +")";
-
-
-
-  var log = '{{log}}';
-  
-  if (log=='false') {
-          var str1 = "Sign Up";
-          var result1 = str1.link("{{url_for('SignUp')}}");
-          document.getElementById("signup").classList.add("nav-link");
-          document.getElementById("signup").innerHTML = result1;
-      }
-  var str;
-  var result;
-  document.getElementById("demo").classList.add("nav-link");
-  if (log=='true') {
-      str = "Log Out";
-      result = str.link("{{url_for('logout')}}");
-      }
-  else{
-          str = "Log in";
-          result = str.link("{{url_for('Login')}}");
-      }
-  
-  console.log(result)
-  document.getElementById("demo").innerHTML = result;
-
-
- 
-  </script>
 
 </body>
+<script src="{{ url_for('static', filename='bootstrap/jquery.js') }}"></script>
+       <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.js') }}"></script>
+       <script>
+            //   var imgsrc = '{{imgsrc}}';
+            //   var imgE = document.getElementById('gamelogo');
+            //   imgE.setAttribute('src',imgsrc);
+            //   // 
+            // //  
+            var imgArray = new Array();
+            
+            imgArray[0] = new Image();
+            imgArray[0].src = '../static/argy_bg.jpg';
+            imgArray[1] = new Image();
+            imgArray[1].src = '../static/spino_bg.jpg';
+            imgArray[2] = new Image();
+            imgArray[2].src = '../static/LOL.png';
+            imgArray[3] = new Image();
+            imgArray[3].src = '../static/R6S.png';
+            imgArray[4] = new Image();
+            imgArray[4].src = '../static/RL.png';
+            
+            
+            document.body.style.backgroundImage = "url("+ imgArray[ Math.floor((Math.random() * 4))].src +")";
+
+            var spnr = document.getElementById('spinnerr');
+            spnr.style.display = 'none';
+            var srchbr = document.getElementById('srchh');
+
+            function sumbt(){
+                spnr.style.display = 'block';
+
+            }
+            
+            
+            
+              var log = '{{log}}';
+              
+              if (log=='false') {
+                      var str1 = "Sign Up";
+                      var result1 = str1.link("{{url_for('SignUp')}}");
+                      document.getElementById("signup").classList.add("nav-link");
+                      document.getElementById("signup").innerHTML = result1;
+                  }
+              var str;
+              var result;
+              document.getElementById("demo").classList.add("nav-link");
+              if (log=='true') {
+                  str = "Log Out";
+                  result = str.link("{{url_for('logout')}}");
+                  }
+              else{
+                      str = "Log in";
+                      result = str.link("{{url_for('Login')}}");
+                  }
+              
+              console.log(result)
+              document.getElementById("demo").innerHTML = result;
+            
+            
+             
+              </script>
 </html>

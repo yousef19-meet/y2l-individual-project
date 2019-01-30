@@ -16,17 +16,22 @@
     
 
 }
+
 .ayy{
     color: white;
+    transition: 1s ease-in-out;
 }
 .ayy:hover {
     border-bottom: 2px solid red;
+    transition: 1s ease-in-out;
 }
 .navbar-light .navbar-nav .nav-link {
     color: white;
+    transition: 1s ease-in-out;
 }
 .navbar-light .navbar-nav .nav-link:hover {
     color: darkred;
+    transition: 1s ease-in-out;
 }
 /* .game_iamge{
     border: 2px solid red;
@@ -183,19 +188,6 @@ body {
     border-color: #343a40;
 }
 
-.login {
-    
-    padding: 30px;
-    border: 3px solid black;
-    border-radius: 50px;
-    top:200px;
-    left:700px;
-    position:absolute;
-
-    font-family: "Courier New", Courier New, Monospace;
-    font-size: 20px;
-
-}
 
 .bar{
     padding: 25px;
@@ -216,6 +208,7 @@ body {
     left:500px;
     font-family: "Courier New", Courier New, Monospace;
     font-size: 20px;
+    background-image: 'sign_up.jpg';
 
 }
 
@@ -313,18 +306,6 @@ div.transbox p {
     position: absolute;
     bottom: 10px; /*your button position*/
     right: 10px; /*your button position*/
-}
-#submi{
-
- 
-    left: 0px;
-    top: 0px;
-    z-index: 1;
-
-    margin-bottom: 800px;
-    margin-right: 400px;
-    color: white;
-
 }
 
 .JobRequests{

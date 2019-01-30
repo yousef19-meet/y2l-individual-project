@@ -6,139 +6,239 @@
     <link rel="stylesheet" type="text/css" href="../static/style_new.css">
     <link rel="stylesheet" type="text/css" href="../static/signup.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/bootstrap.css') }}">
-    <div class= "buttons">
-    <a href="{{ url_for('home')}}" class="btn btn-default">Home </a>
-    <a href="{{ url_for('Login')}}" class="btn btn-default">Login </a></div>
-</head>
-<body>
+    <!-- @!#@#@@@#@#@#@#@#@#@#@##@@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@# -->
+    <nav style=" height: 50px; background: rgba(0, 0, 0, 0.3) !important" class="navbar navbar-expand-lg navbar-light bg-light">
+            <a style="margin-left: 35%;" class="navbar-brand abc" href="home.html"><img style="height: 50px; width: 50px;" src="{{ url_for('static',filename='logo1212.png') }}" width=100px height=100px id="image"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul style="margin-right: 35%;" class="navbar-nav mr-auto">
+                        {% if session['logged_in'] %}
+                        <div class="hello">Hello , {{session['username']}}</div>
+                        <li class="ayy" style="margin-left: 50px;">
+                            <a href="{{ url_for('logout')}}" class="nav-link abc">Logout </a>
+                        </li >
+                        {%else%}
+                        <li class="ayy" style="margin-left: 50px;">
+                            <a href="{{ url_for('Login')}}" class="nav-link abc">Login </a>
+                        </li>
+                        {% endif%}
+                         <div width= 100%>
+                         {% if session['logged_in'] %}
+                         <div style="color: white; font-weight: bold;" class="hello">Hello , {{session['username']}}</div>
+                         {% endif%}
+              </ul>
+            </div>
+    </nav>
 
-</body>
+    <!-- @!#@#@@@#@#@#@#@#@#@#@##@@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@# -->
+</head>
+
 
 
 
 <script src="{{ url_for('static', filename='bootstrap/jquery.js') }}"></script>
 <script src="{{ url_for('static', filename='bootstrap/bootstrap.bundle.js') }}"></script>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="../static/style_new.css">
+
 <style>
-h1{
-    font-size: 50px;
-    font-family: "Courier New", Courier New, Monospace;
-    position:absolute;
-    top:50px;
-    left:50px;
-}
+
+    form {
+        /* border: 1.5px solid gold; */
+        background-image: url('https://images.homedepot-static.com/productImages/763341e6-583b-41e5-8e64-ad1bebb52e19/svn/bruce-solid-hardwood-c0689-64_1000.jpg') !important;
+        margin: auto;
+        width: 35vw;
+        margin-top: 20vh;
+        background-color: transparent;
+        border-radius: 25px;
+    }
+
+    input{
+        font-family: FontAwesome;
+        border-radius: 25px;
+        outline: none;
+        text-indent: 15px;
+        margin-left: 15px;
+        border: 1.5px solid gold;
+        background-color: transparent;
+        color: white;
+        transition: 1s ease-in-out;
+        
+    }
+
+    input:hover{
+        background-color: gold;
+        color: darkslategray;
+        transition: 1s ease-in-out;
+    }
+
+    input::placeholder{
+        color: white;
+    }
+    .btns {
+        background-color: transparent;
+        color: white;
+        border: 1px solid gold;
+        border-radius: 25px;
+        padding: 10px 20px;
+    }
+    .btns:hover {
+        background-color: gold;
+        color: darkslategray;
+        transition: 1s ease-in-out;
+    }
+
+    .icn {
+        width: 16px;
+        height: 16px;
+        color: gold;
+    }
+
+    h2{
+        color: gold;
+        font-weight: bold;
+    }
+    body{
+        background-image: url("../static/signup_bg.jpg") !important;
+        /* background-color: #cccccc; */
+    }
+    
 </style>
 
-<script>
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-        return false;
-    }
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-
-  
-</script>    <body>
-
-   <div class= "containter"><form method="POST">
-    
-    <div class="login">
-            
-            <div><h2>SignUp:</h2></div>
-    
-        <div><input type="text" name="user" placeholder="Username"></div>
+<body>
        
-        <div><input type="password" name="password" placeholder="Password"></div>
+
+   <div style="text-align: center; margin-top: 40vh;" class= "containter">
+       <form method="POST">
     
+        <div style="padding: 30px;">
+                
+            <div><h2>SignUp:</h2></div>
+        
+            <div style="margin-top: 25px;"><i class="fas fa-dragon icn"></i><input type="text" name="user" placeholder="Username"></div>
+        
+            <div style="margin-top: 15px;"><i class="fas fa-shield-alt icn"></i><input type="password" name="password" placeholder="Password"></div>
+        
+        
+        
+            <div style="margin-top: 30px;"><button class="btns" type="submit">SignUp</button><br><br></div>
     
-    
-        <div><button id="submi" class="btn btn-outline-success my-2 my-sm-0" type="submit">SignUp</button><br><br></div>
-   
-    </div>
+        </div>
 </form>
 </div>
-<script>
-      // Sign up
-var log = '{{log}}';
-if (log=='false') {
-        var str1 = "Sign Up";
-        var result1 = str1.link("{{url_for('SignUp')}}");
-        document.getElementById("signup").classList.add("nav-link");
-        document.getElementById("signup").innerHTML = result1;
-    }
 
 
-var str;
-var result;
-document.getElementById("demo").classList.add("nav-link");
-if (log=='true') {
-    str = "Log Out";
-    result = str.link("{{url_for('logout')}}");
-    }
-else{
-        str = "Log in";
-        result = str.link("{{url_for('SignUp')}}");
-    }
 
-console.log(result)
-document.getElementById("demo").innerHTML = result;
 
-</script>
 
-<!-- here is where the login lies me lord -->
+
+
+</body>
+
+
+
 
 <script>
         function myFunction() {
-          document.getElementById("myDropdown").classList.toggle("show");
-          return false;
+            document.getElementById("myDropdown").classList.toggle("show");
+            return false;
         }
         window.onclick = function(event) {
-          if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-              var openDropdown = dropdowns[i];
-              if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    
+      
+    </script>    
+
+
+
+
+
+
+
+<script>
+        // Sign up
+  var log = '{{log}}';
+  if (log=='false') {
+          var str1 = "Sign Up";
+          var result1 = str1.link("{{url_for('SignUp')}}");
+          document.getElementById("signup").classList.add("nav-link");
+          document.getElementById("signup").innerHTML = result1;
+      }
+  
+  
+  var str;
+  var result;
+  document.getElementById("demo").classList.add("nav-link");
+  if (log=='true') {
+      str = "Log Out";
+      result = str.link("{{url_for('logout')}}");
+      }
+  else{
+          str = "Log in";
+          result = str.link("{{url_for('SignUp')}}");
+      }
+  
+  console.log(result)
+  document.getElementById("demo").innerHTML = result;
+  
+  </script>
+  
+  <!-- here is where the login lies me lord -->
+  
+  <script>
+          function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+            return false;
+          }
+          window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+              var dropdowns = document.getElementsByClassName("dropdown-content");
+              var i;
+              for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+                }
               }
             }
           }
-        }
-      
-      var log = '{{log}}';
-      
-      if (log=='false') {
-              var str1 = "Sign Up";
-              var result1 = str1.link("{{url_for('SignUp')}}");
-              document.getElementById("signup").classList.add("nav-link");
-              document.getElementById("signup").innerHTML = result1;
-          }
-      var str;
-      var result;
-      document.getElementById("demo").classList.add("nav-link");
-      if (log=='true') {
-          str = "Log Out";
-          result = str.link("{{url_for('logout')}}");
-          }
-      else{
-              str = "Log in";
-              result = str.link("{{url_for('Login')}}");
-          }
-      
-      console.log(result)
-      document.getElementById("demo").innerHTML = result;
-      
-      </script>
-</body>
+        
+        var log = '{{log}}';
+        
+        if (log=='false') {
+                var str1 = "Sign Up";
+                var result1 = str1.link("{{url_for('SignUp')}}");
+                document.getElementById("signup").classList.add("nav-link");
+                document.getElementById("signup").innerHTML = result1;
+            }
+        var str;
+        var result;
+        document.getElementById("demo").classList.add("nav-link");
+        if (log=='true') {
+            str = "Log Out";
+            result = str.link("{{url_for('logout')}}");
+            }
+        else{
+                str = "Log in";
+                result = str.link("{{url_for('Login')}}");
+            }
+        
+        console.log(result)
+        document.getElementById("demo").innerHTML = result;
+        
+        </script>
 </html>

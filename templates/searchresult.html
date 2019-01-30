@@ -14,23 +14,30 @@
 <!-- #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@ -->
        
     </head>
+    <style>
+        .ayy{
+            color: white;
+            transition: 1s ease-in-out;
+        }
+        .ayy:hover {
+            border-bottom: 2px solid red;
+            transition: 1s ease-in-out;
+        }
+        .navbar-light .navbar-nav .nav-link {
+            color: white;
+            transition: 1s ease-in-out;
+        }
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: darkred;
+            transition: 1s ease-in-out;
+        }
+    </style>
     <body style="background-color: #0e042d;">
 <!-- #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@ -->
-    <!-- {% if session['logged_in'] %}
-       
-       <div class="hello">Hello , {{session['username']}}</div>
-       <a href="{{ url_for('logout')}}" class="btn btn-outline-primary">Logout </a>
-      
-       {%else%}
-    </div>
-    <div>
-       <a href="{{ url_for('SignUp')}}" class="btn btn-outline-primary">SignUp </a>
-       <a href="{{ url_for('Login')}}" class="btn btn-outline-primary">Login </a>
-    </div>
-       {% endif%} -->
+ 
 
        <nav style=" height: 50px; background: rgba(0, 0, 0, 0.3) !important" class="navbar navbar-expand-lg navbar-light bg-light">
-            <a style="margin-left: 35%;" class="navbar-brand abc" href="#"><img style="height: 50px; width: 50px;" src="{{ url_for('static',filename='logo1212.png') }}" width=100px height=100px id="image"></a>
+            <a style="margin-left: 35%;" class="navbar-brand abc" href="home.html"><img style="height: 50px; width: 50px;" src="{{ url_for('static',filename='logo1212.png') }}" width=100px height=100px id="image"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,7 +45,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul style="margin-right: 35%;" class="navbar-nav mr-auto">
                         {% if session['logged_in'] %}
-                        <div class="hello">Hello , {{session['username']}}</div>
+                        <div style="color: white; font-weight: bold;" class="hello">Hello , {{session['username']}}</div>
                         <li class="ayy" style="margin-left: 50px;">
                             <a href="{{ url_for('logout')}}" class="nav-link abc">Logout </a>
                         </li >
@@ -62,12 +69,7 @@
 
 <!-- #@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@ -->
 
-<!-- <div class="container">
-  <img src="img_avatar.png" alt="Avatar" class="image">
-  <div class="overlay">
-    <div class="text">Hello World</div>
-  </div>
-</div> -->
+
 
 
 {% for game in matches %}
@@ -80,47 +82,6 @@
     </div>
 {% endfor %}
 
-<!-- <script>
-    function image_print(){
-          var imgsrc = '{{img_list}}';
-          console.log(imgsrc);
-          var img_list;
-         
-          for (var i=0;i < imgsrc.amount();i++);{
-            var x = document.createElement("img");
-            x.setAttribute('src', imgscr[i]);
-            
-             document.body.appendChild(x);
-          }
-        }
-        image_print();
-          // 
-        //  
-        
-          var log = '{{log}}';
-          
-          if (log=='false') {
-                  var str1 = "Sign Up";
-                  var result1 = str1.link("{{url_for('SignUp')}}");
-                  document.getElementById("signup").classList.add("nav-link");
-                  document.getElementById("signup").innerHTML = result1;
-              }
-          var str;
-          var result;
-          document.getElementById("demo").classList.add("nav-link");
-          if (log=='true') {
-              str = "Log Out";
-              result = str.link("{{url_for('logout')}}");
-              }
-          else{
-                  str = "Log in";
-                  result = str.link("{{url_for('Login')}}");
-              }
-          
-          console.log(result)
-          document.getElementById("demo").innerHTML = result;
-        
-          
-          </script> -->
+
 </body>
 </html>
