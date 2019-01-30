@@ -16,6 +16,18 @@
     
 
 }
+.ayy{
+    color: white;
+}
+.ayy:hover {
+    border-bottom: 2px solid red;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+    color: darkred;
+}
 /* .game_iamge{
     border: 2px solid red;
     
@@ -61,18 +73,30 @@
     word-wrap: break-word;
   }
 
+.gameCard{
+    display: flex; 
+    height: 350px;
+    margin-top: 20px;
+    color: white;
+    transition: 1s ease-in-out;
+    padding-left: 0;
+}
+.gameImg{
+    display: block;
+}
+.gamrCon {
+    margin-top: 20px;
+    margin-left: 20px;
+}
 
+.gameCard:hover {
+    background-color: darkred;
+    
+    transition: 1s ease-in-out;
+}
 
 /* @!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@!@! */
-.game_img{
-    margin-top: 20px;
-    margin-left:10px ;
-    max-width:370px;
-    max-height:235px;
-    width: auto;
-    height: auto;
-    border-radius: 5%;
-}
+
 .dropbtn:hover, .dropbtn:focus {
     background-color: #2980B9;
   
@@ -121,11 +145,11 @@ body {
     height: 100vh;
     margin:0px;
 
-    background: -webkit-linear-gradient( to  top, PaleTurquoise  , white);
+    /* background: -webkit-linear-gradient( to  top, PaleTurquoise  , white);
     background: -moz-linear-gradient( to  top, PaleTurquoise  , white);
     background: -ms-linear-gradient( to  top,   PaleTurquoise  , white);
     background: -o-linear-gradient( to  top,   PaleTurquoise  , white);
-    background: linear-gradient( to  top,  PaleTurquoise , white); 
+    background: linear-gradient( to  top,  PaleTurquoise , white);  */
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -253,6 +277,34 @@ div.transbox p {
     top:5.95px;
     left:493px;
     
+}
+
+
+
+.ayy2 {
+    width: 70%;
+    height: 50px;
+    border-radius: 25px;
+    text-indent: 25px;
+    border: 2px solid darkred;
+    background-color: transparent;
+    font-size: 25px;
+    outline: none;
+    color: darkred;
+    transition: 1s ease-in-out;
+}
+.ayy2::placeholder{
+    color: darkred;
+    transition: 1s ease-in-out;
+}
+.ayy2:hover {
+    background-color: darkred;
+    color: white;
+    transition: 1s ease-in-out;
+}
+.ayy2:hover::placeholder{
+    color: white;
+    transition: 1s ease-in-out;
 }
 
 
