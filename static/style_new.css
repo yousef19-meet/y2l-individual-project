@@ -80,18 +80,21 @@
 
 .gameCard{
     display: flex; 
-    height: 350px;
+    
     margin-top: 20px;
     color: white;
     transition: 1s ease-in-out;
     padding-left: 0;
     height: 40vw;
+    max-height: 350px;
     overflow: hidden;
 }
 .gameImg{
     display: block;
     height: 40vw;
-    width: 40vw;
+    max-height: 350px;
+    max-width: 350px;
+    
 }
 .gamrCon {
     margin-top: 20px;
