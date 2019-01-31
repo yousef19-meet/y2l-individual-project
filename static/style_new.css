@@ -18,20 +18,20 @@
 }
 
 .ayy{
-    color: white;
-    transition: 1s ease-in-out;
+    color: white !important;
+    transition: 1s ease-in-out !important;
 }
 .ayy:hover {
-    border-bottom: 2px solid red;
-    transition: 1s ease-in-out;
+    border-bottom: 2px solid red !important;
+    transition: 1s ease-in-out !important;
 }
 .navbar-light .navbar-nav .nav-link {
-    color: white;
-    transition: 1s ease-in-out;
+    color: white !important;
+    transition: 1s ease-in-out !important;
 }
 .navbar-light .navbar-nav .nav-link:hover {
-    color: darkred;
-    transition: 1s ease-in-out;
+    color: darkred !important;
+    transition: 1s ease-in-out !important;
 }
 /* .game_iamge{
     border: 2px solid red;
@@ -85,9 +85,13 @@
     color: white;
     transition: 1s ease-in-out;
     padding-left: 0;
+    height: 40vw;
+    overflow: hidden;
 }
 .gameImg{
     display: block;
+    height: 40vw;
+    width: 40vw;
 }
 .gamrCon {
     margin-top: 20px;
@@ -275,29 +279,29 @@ div.transbox p {
 
 
 .ayy2 {
-    width: 70%;
-    height: 50px;
-    border-radius: 25px;
-    text-indent: 25px;
-    border: 2px solid darkred;
-    background-color: transparent;
-    font-size: 25px;
-    outline: none;
-    color: darkred;
-    transition: 1s ease-in-out;
+    width: 70% !important;
+    height: 50px !important;
+    border-radius: 25px !important;
+    text-indent: 25px !important;
+    border: 2px solid darkred !important;
+    background-color: transparent !important;
+    font-size: 25px !important;
+    outline: none !important;
+    color: darkred !important;
+    transition: 1s ease-in-out !important;
 }
 .ayy2::placeholder{
-    color: darkred;
-    transition: 1s ease-in-out;
+    color: darkred !important;
+    transition: 1s ease-in-out !important;
 }
 .ayy2:hover {
-    background-color: darkred;
-    color: white;
-    transition: 1s ease-in-out;
+    background-color: darkred !important;
+    color: white !important;
+    transition: 1s ease-in-out !important;
 }
 .ayy2:hover::placeholder{
-    color: white;
-    transition: 1s ease-in-out;
+    color: white !important;
+    transition: 1s ease-in-out !important;
 }
 
 
@@ -324,4 +328,9 @@ div.transbox p {
     border-radius: 10px;
     height:auto;
 
+}
+
+.ayyyy {
+    text-indent: none;
+    text-align: center;
 }

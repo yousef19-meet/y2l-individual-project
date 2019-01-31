@@ -20,8 +20,7 @@
                 top:50px;
                 left:50px;
             }
-      </style>
-      <style>
+
             .centered{
                 position: absolute;
                 top: 50%;
@@ -31,10 +30,6 @@
             
       </style>
        
-       
-      
- 
-
     </head>
 
       
@@ -49,7 +44,7 @@
   
 
 
-<nav style=" height: 50px; background: rgba(0, 0, 0, 0.3) !important" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav style=" background: rgba(0, 0, 0, 0.3) !important" class="navbar navbar-expand-lg navbar-light bg-light">
         <a style="margin-left: 35%;" class="navbar-brand abc" href="#"><img style="height: 50px; width: 50px;" src="{{ url_for('static',filename='logo1212.png') }}" width=100px height=100px id="image"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -90,7 +85,12 @@
 <!--  --><form onsubmit="sumbt()" style="margin-top: 40vh;"  action="{{url_for('display_result')}}" method="post">
 <div class="container3" style=" position: relative; text-align: center;">
   <div class ="img-holder">
+    {% if session['logged_in'] %}
     <input id="srchh"  class="centered ayy2" type="search" placeholder="SearchBar" name="data" aria-label="Search" autocomplete="off"></div>
+    {%else%}
+    <input
+     id="srchh"  class="centered ayy2 ayyyy" type="search" placeholder="You need to be signed in to be able to search!" name="data" aria-label="Search" autocomplete="off" disabled></div>
+    {% endif%}
   </div>
  </form>
 
@@ -160,9 +160,17 @@
             imgArray[6].src = '../static/godofwar1.jpg';
             imgArray[7] = new Image();
             imgArray[7].src = '../static/shadow.jpg';
-            
-            
             document.body.style.backgroundImage = "url("+ imgArray[ Math.floor((Math.random() * 8))].src +")";
+            
+            function chngbg(){
+                document.body.style.transition = '1s'
+                document.body.style.backgroundImage = "url("+ imgArray[ Math.floor((Math.random() * 8))].src +")";
+                document.body.style.transition = '1s'
+            }
+
+            window.setInterval(function(){
+                chngbg();
+            }, 7000);
 
             var spnr = document.getElementById('spinnerr');
             spnr.style.display = 'none';
